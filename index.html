@@ -49,7 +49,14 @@ body {
 }
 
 /* HEADER */
+.top-scroll-boundary {
+  position: relative;
+}
+
 header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
   display: flex;
   flex-direction: row;
   width: 100%;
@@ -551,6 +558,9 @@ header {
 /* ── COMPARE MODE ─────────────────────────────────────────── */
 /* ── Compare toggle bar ── */
 .compare-toggle-bar {
+  position: sticky;
+  top: var(--crs-header-height, 60px);
+  z-index: 90;
   margin: 0 0 0 0;
   padding: 6px 18px;
   background: #fff;
@@ -1757,6 +1767,7 @@ input.chart-zoom-slider {
 <!-- HIDDEN FILE INPUT for JSON import -->
 <input type="file" id="importFileInput" accept=".json,application/json" style="display:none">
 
+<div class="top-scroll-boundary">
 <!-- HEADER -->
 <header>
   <div class="header-zone1">
@@ -1812,6 +1823,17 @@ input.chart-zoom-slider {
     </button>
   </div>
 </header>
+
+<script>
+(() => {
+  const header = document.querySelector('header');
+  const updateHeaderHeight = () => {
+    document.documentElement.style.setProperty('--crs-header-height', `${header.getBoundingClientRect().height}px`);
+  };
+  updateHeaderHeight();
+  new ResizeObserver(updateHeaderHeight).observe(header);
+})();
+</script>
 
 <!-- COMPARE TOGGLE BAR — lives at body level so sticky is always reliable -->
 <div class="compare-toggle-bar">
@@ -1947,6 +1969,7 @@ input.chart-zoom-slider {
   </div>
 
 </div><!-- /top container: sections 1 & 2 -->
+</div><!-- /top scroll boundary: bars release before section 3 -->
 
 <!-- SOLUTIONS WRAPPER — its own full-width band so compare mode has no max-width -->
 <div class="solutions-outer" id="solutionsOuter">
