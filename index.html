@@ -1615,12 +1615,18 @@ input.chart-zoom-slider {
 
 /* RESPONSIVE */
 @media (max-width: 1400px) {
-  header { height: auto; flex-wrap: wrap; min-height: 56px; }
+  header {
+    display: grid;
+    grid-template-columns: max-content minmax(0, 1fr);
+    height: auto;
+    min-height: 56px;
+  }
   .header-zone1, .header-zone2 { height: 56px; }
   .header-zone2 { min-width: 0; }
   .header-zone2 h1, .header-zone2 p { white-space: nowrap; }
   .header-zone3 {
-    width: 100%;
+    grid-column: 1 / -1;
+    width: auto;
     margin-left: 0;
     padding: 8px 12px;
     gap: 8px;
