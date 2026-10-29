@@ -1610,6 +1610,22 @@ input.chart-zoom-slider {
 }
 
 /* RESPONSIVE */
+@media (max-width: 1400px) {
+  header { height: auto; flex-wrap: wrap; min-height: 56px; }
+  .header-zone1, .header-zone2 { height: 56px; }
+  .header-zone2 { min-width: 0; }
+  .header-zone2 h1, .header-zone2 p { white-space: nowrap; }
+  .header-zone3 {
+    width: 100%;
+    margin-left: 0;
+    padding: 8px 12px;
+    gap: 8px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    border-top: 1px solid var(--border);
+  }
+}
+
 /* ============================================================
    RESPONSIVE — TABLET  (≤ 900px)
    ============================================================ */
